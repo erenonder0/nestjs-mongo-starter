@@ -2,7 +2,6 @@
 
 This is a template for a simple To Do List web app that consists of a REST API and a simple front end UI.
 
-
 ## Installation
 
 ```bash
@@ -12,14 +11,12 @@ $ yarn
 ## Running the app
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
+# development (watch mode)
 $ yarn run start:dev
 
 # production mode
-$ yarn run start:prod
+$ yarn build
+$ yarn run start
 ```
 
 ## Test
