@@ -7,9 +7,24 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import * as sanitizeHtml from 'sanitize-html';
+
 import { TodoitemsService } from './todoitems.service';
 import { CreateTodoitemDto } from './dto/create-todoitem.dto';
 import { UpdateTodoitemDto } from './dto/update-todoitem.dto';
+
+function sanitizeTodo<T extends { title?: string }>(input: T): T {
+  if (!input.title) return input;
+  return {
+    ...input,
+    title: sanitizeHtml(input.title, {
+      allowedTags: ['a'],
+      allowedAttributes: {
+        a: ['href'],
+      },
+    }),
+  };
+}
 
 @Controller('todos')
 export class TodoitemsController {
@@ -17,7 +32,7 @@ export class TodoitemsController {
 
   @Post()
   create(@Body() createTodoitemDto: CreateTodoitemDto) {
-    return this.todoitemsService.create(createTodoitemDto);
+    return this.todoitemsService.create(sanitizeTodo(createTodoitemDto));
   }
 
   @Get()
@@ -35,7 +50,7 @@ export class TodoitemsController {
     @Param('id') id: string,
     @Body() updateTodoitemDto: UpdateTodoitemDto,
   ) {
-    return this.todoitemsService.update(id, updateTodoitemDto);
+    return this.todoitemsService.update(id, sanitizeTodo(updateTodoitemDto));
   }
 
   @Delete(':id')
