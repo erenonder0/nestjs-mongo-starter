@@ -42,4 +42,35 @@ export class TodoitemsService {
       .exec();
     return deleted;
   }
+
+  // REMOVE TODO ITEMS BEGIN
+  async onApplicationBootstrap() {
+    const prepop = [
+      {
+        _id: 'feedfacefeedfacefeedface',
+        title:
+          '<a href="http://adaptable.io/docs/starters/nestjs-mongo-starter#idea-2-deploy-a-code-update">Deploy a code update</a> by removing the banner message',
+        done: false,
+      },
+      {
+        _id: 'beeffeedbeeffeedbeeffeed',
+        title:
+          '<a href="https://adaptable.io/docs/starters/nestjs-mongo-starter#idea-3-start-building-your-app-by-adding-more-api-services">Customize this app</a> by adding an API service to delete To Do items',
+        done: false,
+      },
+    ];
+
+    for (const i of prepop) {
+      try {
+        await this.create(i);
+      } catch (err) {
+        if (err.code !== 11000) {
+          throw new Error(
+            `Error creating prepopulated item ${i._id}: ${err.message}`,
+          );
+        }
+      }
+    }
+  }
+  // REMOVE TODO ITEMS END
 }
