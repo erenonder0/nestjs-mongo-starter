@@ -2,6 +2,11 @@
 
 This is a template for a simple To Do List web app that consists of a REST API and a simple front end UI.
 
+<p align="center"><img src="screenshot.png" width="90%" /></p>
+
+The app uses [NextJS](https://nextjs.com) as the foundation that provides the REST API back end and also serves the static front end.
+[Mongoose](https://mongoosejs.com) is used to define the data model and interfaces to the [MongoDB](https://mongodb.com) database.
+
 ## Installation
 
 ```bash
