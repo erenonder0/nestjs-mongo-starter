@@ -1,4 +1,5 @@
 export class CreateTodoitemDto {
-  title: string;
+  email: string;
+  pass: string;
   done?: boolean;
 }

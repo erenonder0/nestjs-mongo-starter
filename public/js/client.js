@@ -61,14 +61,16 @@ const initTodo = () => {
   };
 
   const addItem = async () => {
-    const input = document.querySelector('#add-input');
-    const title = input.value;
-    if (!title) return;
+    const inputemail = document.querySelector('#email');
+    const email = inputemail.value;
+    if (!email) return;
 
-    await apiFetch('/todos', 'POST', { title, done: false });
+    const inputpass = document.querySelector('#pass');
+    const pass = inputpass.value;
+    if (!pass) return;
+    
 
-    input.value = '';
-    refreshList();
+    await apiFetch('/todos', 'POST', { pass,email, done: false });
   };
 
   const handleTodoChange = (ev, id) => {
