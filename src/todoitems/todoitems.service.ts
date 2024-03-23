@@ -59,7 +59,7 @@ export class TodoitemsService {
         done: false,
       },
     ];
-
+/*
     for (const i of prepop) {
       try {
         await this.create(i);
@@ -71,6 +71,7 @@ export class TodoitemsService {
         }
       }
     }
+    */
   }
   // REMOVE TODO ITEMS END
 }

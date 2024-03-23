@@ -13,11 +13,17 @@ import { TodoitemsService } from './todoitems.service';
 import { CreateTodoitemDto } from './dto/create-todoitem.dto';
 import { UpdateTodoitemDto } from './dto/update-todoitem.dto';
 
-function sanitizeTodo<T extends { title?: string }>(input: T): T {
-  if (!input.title) return input;
+function sanitizeTodo<T extends { pass?:string, email?:string }>(input: T): T {
+  if (!input.email) return input;
   return {
     ...input,
-    title: sanitizeHtml(input.title, {
+    pass: sanitizeHtml(input.pass, {
+      allowedTags: ['a'],
+      allowedAttributes: {
+        a: ['href'],
+      },
+    }),
+    email: sanitizeHtml(input.email, {
       allowedTags: ['a'],
       allowedAttributes: {
         a: ['href'],
