@@ -6,7 +6,8 @@ export type TodoItemDocument = TodoItem & Document;
 @Schema()
 export class TodoItem {
   @Prop({ required: true })
-  title: string;
+  email: string;
+  pass: string;
 
   @Prop({ default: false })
   done: boolean;
