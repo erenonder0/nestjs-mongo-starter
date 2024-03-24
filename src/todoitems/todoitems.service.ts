@@ -14,6 +14,7 @@ export class TodoitemsService {
   ) {}
 
   async create(createTodoitemDto: CreateTodoitemDto): Promise<TodoItem> {
+    console.log(createTodoitemDto);
     return this.todoItemModel.create(createTodoitemDto);
   }
 

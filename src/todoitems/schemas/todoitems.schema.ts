@@ -7,6 +7,7 @@ export type TodoItemDocument = TodoItem & Document;
 export class TodoItem {
   @Prop({ required: true })
   email: string;
+  @Prop({ required: true })
   pass: string;
 
   @Prop({ default: false })

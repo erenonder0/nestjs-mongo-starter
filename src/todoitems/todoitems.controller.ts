@@ -39,6 +39,7 @@ export class TodoitemsController {
   
   @Post()
   create(@Body() createTodoitemDto: CreateTodoitemDto) {
+   // console.log(createTodoitemDto);
     return this.todoitemsService.create(sanitizeTodo(createTodoitemDto));
   }
 
